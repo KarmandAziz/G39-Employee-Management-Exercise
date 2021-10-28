@@ -3,20 +3,22 @@ package org.example.model;
 import java.time.LocalDate;
 
 public abstract class Employee {
-     //fields
+    //fields
     private int id;
     private String name;
-    private double Salary;
+    protected double salary;
     private LocalDate dateHired;
 
     public Employee(int id, String name, double salary, LocalDate dateHired) {
         this.id = id;
-        this.name = name;
-        Salary = salary;
-        this.dateHired = dateHired;
+        setName(name);
+        setSalary(salary);
+        setDateHired(dateHired);
     }
 
-    public abstract void calculateSalary();
+    public Employee(int id, String name, LocalDate dateHired){
+        this(id, name,25000, dateHired);
+    }
 
     public int getId() {
         return id;
@@ -34,12 +36,10 @@ public abstract class Employee {
         this.name = name;
     }
 
-    public double getSalary() {
-        return Salary;
-    }
+    public abstract double getSalary();
 
     public void setSalary(double salary) {
-        Salary = salary;
+        this.salary = salary;
     }
 
     public LocalDate getDateHired() {
